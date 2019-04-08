@@ -39,6 +39,7 @@ import javafx.scene.control.TitledPane;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Priority;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
@@ -145,7 +146,7 @@ public class ToDoList extends Application {
                         addItemTableView.setItems((ObservableList) taskList.getTaskList());
                         AnchorPane addItemAnchorPane = (AnchorPane) tabAnchorpane.getChildren().get(0);
                         TextField priority = ((TextField) ((TitledPane) addItemAnchorPane.getChildren().get(1)).getContent());
-                        priority.setText(getNextPriority());
+                        priority.setText("1");
                     }
                 }
             });
@@ -171,7 +172,7 @@ public class ToDoList extends Application {
                     AnchorPane addItemAnchorPane = (AnchorPane) tabAnchorpane.getChildren().get(0);
                     TextField description = ((TextField) ((TitledPane) addItemAnchorPane.getChildren().get(0)).getContent());
                     TextField priority = ((TextField) ((TitledPane) addItemAnchorPane.getChildren().get(1)).getContent());
-                    priority.setText(getNextPriority());
+                    priority.setText("1");
                     priority.textProperty().addListener(new ChangeListener<String>() {
                         @Override
                         public void changed(ObservableValue<? extends String> observable, String oldValue,
@@ -195,6 +196,7 @@ public class ToDoList extends Application {
                         public void handle(ActionEvent event) {
                             //Validate the fields entered by the user
                             try {
+                                taskList.movePriority(Integer.parseInt((priority.getText().equals(StringConstants.STRING_EMPTY)) ? "0" : priority.getText()));
                                 Task newTask = new Task(description.getText(), Integer.parseInt((priority.getText().equals(StringConstants.STRING_EMPTY)) ? "0" : priority.getText()), dueDate.getValue(), (String) status.getValue(), startDate.getValue(), endDate.getValue());
                                 validateAddItem(newTask);
                                 taskList.addtask(newTask);
@@ -205,7 +207,7 @@ public class ToDoList extends Application {
                                 status.getSelectionModel().selectFirst();
                                 startDate.getEditor().clear();
                                 endDate.getEditor().clear();
-                                priority.setText(getNextPriority());
+                                priority.setText("1");
                             } catch (Exception e) {
                                 String error;
                                 if (e.getMessage().isEmpty()) {
@@ -259,27 +261,9 @@ public class ToDoList extends Application {
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
             setErrorStatus(statusTxt, StringConstants.MSG_APPLICATION_ERROR);
         }
         stage.show();
-    }
-
-    /**
-     * Get the next priority required to be populated in the add item pane
-     *
-     * @return
-     */
-    private String getNextPriority() {
-        int result = 0;
-        if (taskList != null && taskList.getTaskList() != null) {
-            for (Task t : taskList.getTaskList()) {
-                if (t.getPriority() > result) {
-                    result = t.getPriority();
-                }
-            }
-        }
-        return String.valueOf(result + 1);
     }
 
     /**

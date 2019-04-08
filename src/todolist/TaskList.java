@@ -109,6 +109,19 @@ public class TaskList implements Serializable {
     }
 
     /**
+     * Move the priorities of all the tasks above the given priority by one to accommodate the new task
+     * 
+     * @param pPriority 
+     */
+    public void movePriority(int pPriority) {
+        for(Task task : taskList) {
+            if(task.getPriority() >= pPriority) {
+                task.setPriority(task.getPriority()+1);
+            }
+        }
+    }
+    
+    /**
      * Get the string representation of the task list
      * 
      * @return 
