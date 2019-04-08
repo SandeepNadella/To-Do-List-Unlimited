@@ -1,5 +1,9 @@
 /*
- * This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by    * the Free Software Foundation, either version 3 of the License, or (at your option) any later version. This program is distributed in the     * hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR      * PURPOSE. See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with   * this program. If not, see <https://www.gnu.org/licenses/>.
+ * This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by    
+ * the Free Software Foundation, either version 3 of the License, or (at your option) any later version. This program is distributed in the     
+ * hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR      
+ * PURPOSE. See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with   
+ * this program. If not, see <https://www.gnu.org/licenses/>.
  */
 package todolist;
 
@@ -13,13 +17,15 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 /**
- *
- * @author sanadell
+ * This class describes a task bean
+ * 
+ * @author Sandeep Nadella
  */
 public class Task implements Serializable {
     
     private static final long serialVersionUID = 2L;
 
+    // Member variables
     private transient StringProperty description;
     private transient IntegerProperty priority;
     private transient ObjectProperty<LocalDate> dueDate;
@@ -27,6 +33,16 @@ public class Task implements Serializable {
     private transient ObjectProperty<LocalDate> startDate;
     private transient ObjectProperty<LocalDate> endDate;
 
+    /**
+     * Create a task with the given input parameters
+     * 
+     * @param description
+     * @param priority
+     * @param dueDate
+     * @param status
+     * @param startDate
+     * @param endDate 
+     */
     public Task(String description, int priority, LocalDate dueDate, String status, LocalDate startDate, LocalDate endDate) {
         this.description = new SimpleStringProperty(description);
         this.priority = new SimpleIntegerProperty(priority);
@@ -36,6 +52,14 @@ public class Task implements Serializable {
         this.endDate = new SimpleObjectProperty<>(endDate);
     }
 
+    /**
+     * Create a task with the given input parameters
+     * 
+     * @param description
+     * @param priority
+     * @param dueDate
+     * @param status 
+     */
     public Task(String description, int priority, LocalDate dueDate, String status) {
         this.description = new SimpleStringProperty(description);
         this.priority = new SimpleIntegerProperty(priority);
@@ -43,6 +67,15 @@ public class Task implements Serializable {
         this.status = new SimpleStringProperty(status);
     }
 
+    /**
+     * Create a task with the given input parameters
+     * 
+     * @param description
+     * @param priority
+     * @param dueDate
+     * @param status
+     * @param startDate 
+     */
     public Task(String description, int priority, LocalDate dueDate, String status, LocalDate startDate) {
         this.description = new SimpleStringProperty(description);
         this.priority = new SimpleIntegerProperty(priority);
@@ -99,6 +132,11 @@ public class Task implements Serializable {
         this.endDate.set(endDate);
     }
     
+    /**
+     * Get a formatted string representation of a task
+     * 
+     * @return 
+     */
     @Override
     public String toString() {
       String result  = "";

@@ -13,8 +13,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 /**
- *
- * @author sanadell
+ * This class describes the task list bean
+ * 
+ * @author Sandeep Nadella
  */
 public class TaskList implements Serializable {
 
@@ -22,22 +23,50 @@ public class TaskList implements Serializable {
 
     private transient ObservableList<Task> taskList;
 
+    /**
+     * Create a new task list
+     */
     public TaskList() {
         this.taskList = FXCollections.observableArrayList();
     }
 
+    /**
+     * Get the task list
+     * 
+     * @return 
+     */
     public List<Task> getTaskList() {
         return taskList;
     }
 
+    /**
+     * Set the task list
+     * 
+     * @param taskList 
+     */
     public void setTaskList(List<Task> taskList) {
         this.taskList.setAll(taskList);
     }
 
+    /**
+     * Add the task to the task list
+     * 
+     * @param task 
+     */
     public void addtask(Task task) {
         this.taskList.add(task);
     }
 
+    /**
+     * Add task with the all the task properties passed
+     * 
+     * @param pDescription
+     * @param pPriority
+     * @param pDueDate
+     * @param pStatus
+     * @param pStartDate
+     * @param pEndDate 
+     */
     public void addtask(String pDescription, int pPriority, LocalDate pDueDate, String pStatus, LocalDate pStartDate, LocalDate pEndDate) {
         Task task = new Task(pDescription, pPriority, pDueDate, pStatus, pStartDate, pEndDate);
         if (this.taskList != null) {
@@ -49,6 +78,12 @@ public class TaskList implements Serializable {
         }
     }
 
+    /**
+     * Check if the priority passed is unique across all tasks in task list
+     * 
+     * @param pPriority
+     * @return 
+     */
     public boolean checkUniquePriority(int pPriority) {
         for (Task task : this.taskList) {
             if (task.getPriority() == pPriority) {
@@ -58,6 +93,12 @@ public class TaskList implements Serializable {
         return true;
     }
 
+    /**
+     * Check if the description passed is unique across all tasks in task list
+     * 
+     * @param pDescription
+     * @return 
+     */
     public boolean checkUniqueDescription(String pDescription) {
         for (Task task : this.taskList) {
             if (task.getDescription().equals(pDescription)) {
@@ -67,6 +108,11 @@ public class TaskList implements Serializable {
         return true;
     }
 
+    /**
+     * Get the string representation of the task list
+     * 
+     * @return 
+     */
     @Override
     public String toString() {
         String result = "";
@@ -76,6 +122,12 @@ public class TaskList implements Serializable {
         return result;
     }
 
+    /**
+     * Writes all the tasks in the task list to the given output stream
+     * 
+     * @param out
+     * @throws IOException 
+     */
     private void writeObject(ObjectOutputStream out) throws IOException {
         out.defaultWriteObject();
         for (Task task : taskList) {
@@ -88,6 +140,13 @@ public class TaskList implements Serializable {
         }
     }
 
+    /**
+     * Reads from the input stream and adds to the task list
+     * 
+     * @param in
+     * @throws IOException
+     * @throws ClassNotFoundException 
+     */
     private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
         while (in.available() > 0) {
             addtask(in.readUTF(), in.readInt(), (LocalDate) in.readUnshared(), in.readUTF(), (LocalDate) in.readUnshared(), (LocalDate) in.readUnshared());
