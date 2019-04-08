@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.collections.*?>
+
+<TitledPane animated="false" collapsible="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" text="To-Do List Unlimited 2019" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    <content>
+        <AnchorPane id="uiTitledPane-uiAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="600.0" prefWidth="800.0">
+            <children>
+                <TabPane id="uiItemPane" layoutX="12.2" layoutY="62.2" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="20.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="51.0">
+                    <tabs>
+                        <Tab id="tab-addItems" text="Add Items">
+                            <content>
+                                <AnchorPane id="tab-anchorPane">
+                                    <children>
+                                        <AnchorPane id="addItem-anchorPane" minHeight="-Infinity" minWidth="-Infinity" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <children>
+                                                <TitledPane id="tab-addItems-Description" collapsible="false" focusTraversable="false" layoutX="10.0" layoutY="10.0" text="Description" wrapText="true" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="970.0">
+                                                    <content>
+                                                        <TextField layoutX="9.0" layoutY="10.0" prefHeight="30.0" prefWidth="176.0" promptText="Description" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="970.0" AnchorPane.topAnchor="10.0" />
+                                                    </content>
+                                                </TitledPane>
+                                                <TitledPane id="tab-addItems-Priority" collapsible="false" focusTraversable="false" layoutX="304.0" layoutY="10.0" text="Priority" AnchorPane.rightAnchor="870.0">
+                                                    <content>
+                                                        <TextField layoutX="195.0" layoutY="10.0" prefHeight="30.0" prefWidth="80.0" promptText="Priority#" AnchorPane.rightAnchor="870.0">
+                                                            <padding>
+                                                                <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                            </padding>
+                                                        </TextField>
+                                                    </content>
+                                                </TitledPane>
+                                                <TitledPane id="tab-addItems-DueDate" collapsible="false" focusTraversable="false" layoutX="404.0" layoutY="10.0" text="Due Date" AnchorPane.rightAnchor="720.0">
+                                                    <content>
+                                                        <DatePicker layoutX="284.0" layoutY="10.0" prefHeight="30.0" prefWidth="130.0" promptText="mm/dd/yyyy" AnchorPane.rightAnchor="720.0" />
+                                                    </content>
+                                                </TitledPane>
+                                                <TitledPane id="tab-addItems-Status" collapsible="false" focusTraversable="false" layoutX="554.0" layoutY="10.0" text="Status" AnchorPane.rightAnchor="600.0">
+                                                    <content>
+                                                        <ChoiceBox layoutX="384.0" layoutY="10.0" prefHeight="30.0" prefWidth="100.0" AnchorPane.rightAnchor="600.0">
+                                                            <items>
+                                                                <FXCollections fx:factory="observableArrayList">
+                                                                    <String fx:value="Not Started" />
+                                                                    <String fx:value="In Progress" />
+                                                                    <String fx:value="Finished" />
+                                                                </FXCollections>
+                                                            </items>
+                                                        </ChoiceBox>
+                                                    </content>
+                                                </TitledPane>
+                                                <TitledPane id="tab-addItems-StartDate" collapsible="false" focusTraversable="false" layoutX="674.0" layoutY="10.0" text="Start Date" AnchorPane.rightAnchor="450.0">
+                                                    <content>
+                                                        <DatePicker layoutX="495.0" layoutY="10.0" prefHeight="30.0" prefWidth="130.0" promptText="mm/dd/yyyy" AnchorPane.rightAnchor="450.0" />
+                                                    </content>
+                                                </TitledPane>
+                                                <TitledPane id="tab-addItems-EndDate" collapsible="false" focusTraversable="false" layoutX="824.0" layoutY="10.0" text="End Date" AnchorPane.rightAnchor="300.0">
+                                                    <content>
+                                                        <DatePicker layoutX="596.0" layoutY="10.0" prefHeight="30.0" prefWidth="130.0" promptText="mm/dd/yyyy" AnchorPane.rightAnchor="300.0" />
+                                                    </content>
+                                                </TitledPane>
+                                                <Button layoutX="1189.0" layoutY="40.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" text="Add" AnchorPane.rightAnchor="5.0">
+                                                    <font>
+                                                        <Font size="14.0" />
+                                                    </font>
+                                                </Button>
+                                            </children>
+                                        </AnchorPane>
+                                        <TableView id="tab-addItems-TableView" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="80.0">
+                                            <columns>
+                                                <TableColumn prefWidth="510.0" text="Description" />
+                                                <TableColumn prefWidth="70.0" text="Priority" />
+                                                <TableColumn prefWidth="155" text="Due Date" />
+                                                <TableColumn prefWidth="115" text="Status" />
+                                                <TableColumn prefWidth="155" text="Start Date" />
+                                                <TableColumn prefWidth="155" text="End Date" />
+                                            </columns>
+                                        </TableView>
+                                    </children>
+                                </AnchorPane>
+                            </content>
+                        </Tab>
+                        <Tab id="tab-updateItems" text="Update Items">
+                            <content>
+                                <AnchorPane>
+                                    <children>
+                                        <ScrollPane fitToHeight="true" fitToWidth="true" layoutY="37.0" prefHeight="440.0" prefWidth="797.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="37.0">
+                                            <content>
+                                                <AnchorPane layoutY="46.0" minHeight="0.0" minWidth="0.0" prefHeight="628.0" prefWidth="1249.0">
+                                                    <children>
+                                                        <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="798.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                                                            <children>
+                                                                <TextField layoutX="9.0" layoutY="10.0" prefHeight="30.0" prefWidth="176.0" promptText="Description" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="1070.0">
+                                                                    <padding>
+                                                                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                                    </padding>
+                                                                </TextField>
+                                                                <TextField layoutX="195.0" layoutY="10.0" prefHeight="30.0" prefWidth="80.0" promptText="Priority#" AnchorPane.rightAnchor="970.0">
+                                                                    <padding>
+                                                                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                                    </padding>
+                                                                </TextField>
+                                                                <DatePicker layoutX="284.0" layoutY="10.0" prefHeight="30.0" prefWidth="130.0" promptText="mm/dd/yyyy" AnchorPane.rightAnchor="820.0" />
+                                                                <ChoiceBox layoutX="384.0" layoutY="10.0" prefHeight="30.0" prefWidth="100.0" AnchorPane.rightAnchor="700.0">
+                                                                    <padding>
+                                                                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                                    </padding>
+                                                                    <items>
+                                                                        <FXCollections fx:factory="observableArrayList">
+                                                                            <String fx:value="Not Started" />
+                                                                            <String fx:value="In Progress" />
+                                                                            <String fx:value="Finished" />
+                                                                        </FXCollections>
+                                                                    </items>
+                                                                </ChoiceBox>
+                                                                <DatePicker layoutX="493.0" layoutY="10.0" prefHeight="30.0" prefWidth="130.0" promptText="mm/dd/yyyy" AnchorPane.rightAnchor="550.0" />
+                                                                <DatePicker layoutX="593.0" layoutY="10.0" prefHeight="30.0" prefWidth="130.0" promptText="mm-dd-yyyy" AnchorPane.rightAnchor="400.0" />
+                                                                <Button layoutX="710.0" layoutY="15.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" text="X" AnchorPane.rightAnchor="200.0">
+                                                                    <padding>
+                                                                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                                    </padding>
+                                                                </Button>
+                                                            </children>
+                                                            <padding>
+                                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                            </padding>
+                                                        </AnchorPane>
+                                                        <AnchorPane layoutY="50.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="798.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                                                            <children>
+                                                                <TextField layoutX="9.0" layoutY="10.0" prefHeight="30.0" prefWidth="176.0" promptText="Description" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="1070.0">
+                                                                    <padding>
+                                                                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                                    </padding>
+                                                                </TextField>
+                                                                <TextField layoutX="195.0" layoutY="10.0" prefHeight="30.0" prefWidth="80.0" promptText="Priority#" AnchorPane.rightAnchor="970.0">
+                                                                    <padding>
+                                                                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                                    </padding>
+                                                                </TextField>
+                                                                <DatePicker layoutX="284.0" layoutY="10.0" prefHeight="30.0" prefWidth="130.0" promptText="mm/dd/yyyy" AnchorPane.rightAnchor="820.0" />
+                                                                <ChoiceBox layoutX="384.0" layoutY="10.0" prefHeight="30.0" prefWidth="100.0" AnchorPane.rightAnchor="700.0">
+                                                                    <padding>
+                                                                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                                    </padding>
+                                                                    <items>
+                                                                        <FXCollections fx:factory="observableArrayList">
+                                                                            <String fx:value="Not Started" />
+                                                                            <String fx:value="In Progress" />
+                                                                            <String fx:value="Finished" />
+                                                                        </FXCollections>
+                                                                    </items>
+                                                                </ChoiceBox>
+                                                                <DatePicker layoutX="493.0" layoutY="10.0" prefHeight="30.0" prefWidth="130.0" promptText="mm/dd/yyyy" AnchorPane.rightAnchor="550.0" />
+                                                                <DatePicker layoutX="593.0" layoutY="10.0" prefHeight="30.0" prefWidth="130.0" promptText="mm/dd/yyyy" AnchorPane.rightAnchor="400.0" />
+                                                                <Button layoutX="710.0" layoutY="15.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" text="X" AnchorPane.rightAnchor="200.0">
+                                                                    <padding>
+                                                                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                                    </padding>
+                                                                </Button>
+                                                            </children>
+                                                            <padding>
+                                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                            </padding>
+                                                        </AnchorPane>
+                                                        <AnchorPane layoutY="100.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="798.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                                                            <children>
+                                                                <TextField layoutX="9.0" layoutY="10.0" prefHeight="30.0" prefWidth="176.0" promptText="Description" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="1070.0">
+                                                                    <padding>
+                                                                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                                    </padding>
+                                                                </TextField>
+                                                                <TextField layoutX="195.0" layoutY="10.0" prefHeight="30.0" prefWidth="80.0" promptText="Priority#" AnchorPane.rightAnchor="970.0">
+                                                                    <padding>
+                                                                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                                    </padding>
+                                                                </TextField>
+                                                                <DatePicker layoutX="284.0" layoutY="10.0" prefHeight="30.0" prefWidth="130.0" promptText="mm/dd/yyyy" AnchorPane.rightAnchor="820.0" />
+                                                                <ChoiceBox layoutX="384.0" layoutY="10.0" prefHeight="30.0" prefWidth="100.0" AnchorPane.rightAnchor="700.0">
+                                                                    <padding>
+                                                                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                                    </padding>
+                                                                    <items>
+                                                                        <FXCollections fx:factory="observableArrayList">
+                                                                            <String fx:value="Not Started" />
+                                                                            <String fx:value="In Progress" />
+                                                                            <String fx:value="Finished" />
+                                                                        </FXCollections>
+                                                                    </items>
+                                                                </ChoiceBox>
+                                                                <DatePicker layoutX="493.0" layoutY="10.0" prefHeight="30.0" prefWidth="130.0" promptText="mm/dd/yyyy" AnchorPane.rightAnchor="550.0" />
+                                                                <DatePicker layoutX="593.0" layoutY="10.0" prefHeight="30.0" prefWidth="130.0" promptText="mm/dd/yyyy" AnchorPane.rightAnchor="400.0" />
+                                                                <Button layoutX="710.0" layoutY="15.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" text="X" AnchorPane.rightAnchor="200.0">
+                                                                    <padding>
+                                                                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                                    </padding>
+                                                                </Button>
+                                                            </children>
+                                                            <padding>
+                                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                            </padding>
+                                                        </AnchorPane>
+                                                        <AnchorPane layoutY="150.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="798.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                                                            <children>
+                                                                <TextField layoutX="9.0" layoutY="10.0" prefHeight="30.0" prefWidth="176.0" promptText="Description" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="1070.0">
+                                                                    <padding>
+                                                                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                                    </padding>
+                                                                </TextField>
+                                                                <TextField layoutX="195.0" layoutY="10.0" prefHeight="30.0" prefWidth="80.0" promptText="Priority#" AnchorPane.rightAnchor="970.0">
+                                                                    <padding>
+                                                                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                                    </padding>
+                                                                </TextField>
+                                                                <DatePicker layoutX="284.0" layoutY="10.0" prefHeight="30.0" prefWidth="130.0" promptText="mm/dd/yyyy" AnchorPane.rightAnchor="820.0" />
+                                                                <ChoiceBox layoutX="384.0" layoutY="10.0" prefHeight="30.0" prefWidth="100.0" AnchorPane.rightAnchor="700.0">
+                                                                    <padding>
+                                                                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                                    </padding>
+                                                                    <items>
+                                                                        <FXCollections fx:factory="observableArrayList">
+                                                                            <String fx:value="Not Started" />
+                                                                            <String fx:value="In Progress" />
+                                                                            <String fx:value="Finished" />
+                                                                        </FXCollections>
+                                                                    </items>
+                                                                </ChoiceBox>
+                                                                <DatePicker layoutX="493.0" layoutY="10.0" prefHeight="30.0" prefWidth="130.0" promptText="mm/dd/yyyy" AnchorPane.rightAnchor="550.0" />
+                                                                <DatePicker layoutX="593.0" layoutY="10.0" prefHeight="30.0" prefWidth="130.0" promptText="mm/dd/yyyy" AnchorPane.rightAnchor="400.0" />
+                                                                <Button layoutX="710.0" layoutY="15.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" text="X" AnchorPane.rightAnchor="200.0">
+                                                                    <padding>
+                                                                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                                    </padding>
+                                                                </Button>
+                                                            </children>
+                                                            <padding>
+                                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                            </padding>
+                                                        </AnchorPane>
+                                                    </children>
+                                                </AnchorPane>
+                                            </content>
+                                        </ScrollPane>
+                                        <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="0.0">
+                                            <children>
+                                                <TitledPane collapsible="false" layoutX="9.0" layoutY="10.0" text="Description" AnchorPane.rightAnchor="1070.0" />
+                                                <TitledPane collapsible="false" layoutX="195.0" layoutY="10.0" text="Priority" AnchorPane.rightAnchor="970.0" />
+                                                <TitledPane collapsible="false" layoutX="284.0" layoutY="10.0" text="Due Date" AnchorPane.rightAnchor="820.0" />
+                                                <TitledPane collapsible="false" layoutX="384.0" layoutY="10.0" text="Status" AnchorPane.rightAnchor="700.0" />
+                                                <TitledPane collapsible="false" layoutX="493.0" layoutY="10.0" text="Start Date" AnchorPane.rightAnchor="550.0" />
+                                                <TitledPane collapsible="false" layoutX="593.0" layoutY="10.0" text="End Date" AnchorPane.rightAnchor="400.0" />
+                                                <TitledPane collapsible="false" layoutX="710.0" layoutY="10.0" text="Remove" AnchorPane.rightAnchor="200.0" />
+                                            </children>
+                                        </AnchorPane>
+                                    </children>
+                                </AnchorPane>
+                            </content>
+                        </Tab>
+                    </tabs>
+                </TabPane>
+                <Button id="saveBtn" layoutX="720.0" layoutY="10.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" text="Save" textAlignment="CENTER" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Button>
+                <Button id="restoreBtn" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Restore" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Button>
+                <Button id="printBtn" layoutX="650.0" layoutY="10.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" text="Print" AnchorPane.rightAnchor="90.0" AnchorPane.topAnchor="0.0">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Button>
+                <Text id="messageBoardText" fontSmoothingType="LCD" layoutX="80.0" layoutY="32.0" lineSpacing="0.5" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="1000.0" AnchorPane.leftAnchor="90.0" AnchorPane.rightAnchor="160.0" AnchorPane.topAnchor="6.0">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Text>
+            </children>
+        </AnchorPane>
+    </content>
+    <font>
+        <Font name="System Bold" size="14.0" />
+    </font>
+</TitledPane>
