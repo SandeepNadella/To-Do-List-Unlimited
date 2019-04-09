@@ -16,6 +16,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -26,10 +27,12 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
@@ -68,8 +71,8 @@ public class ToDoList extends Application {
      */
     @Override
     public void start(final Stage stage) throws Exception {
-        TitledPane root = (TitledPane) FXMLLoader.load(getClass().getResource(StringConstants.APP_UI_FILE_NAME));
 
+        TitledPane root = (TitledPane) FXMLLoader.load(getClass().getResource(StringConstants.APP_UI_FILE_NAME));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.setTitle(StringConstants.APP_TITLE);
@@ -80,18 +83,14 @@ public class ToDoList extends Application {
         if (splashScreen != null) {
             splashScreen.close();
         }
-
         AnchorPane rootAnchorPane = (AnchorPane) root.getContent();
         TabPane optionsPane = (TabPane) rootAnchorPane.getChildren().get(0);
         Button saveBtn = (Button) rootAnchorPane.getChildren().get(1);
         Button restoreBtn = (Button) rootAnchorPane.getChildren().get(2);
         Button printBtn = (Button) rootAnchorPane.getChildren().get(3);
-
         Text statusTxt = (Text) rootAnchorPane.getChildren().get(4);
         statusTxt.setTextAlignment(TextAlignment.CENTER);
-
         statusTxt.textProperty().addListener(new ChangeListener<String>() {
-
             @Override
             public void changed(ObservableValue observable, String oldValue, String newValue) {
                 // Create a timer thread to clear the status after a cetain time
@@ -112,9 +111,68 @@ public class ToDoList extends Application {
         try {
             //Create and open default file for writing
             openFile();
-
             saveBtn.setOnAction((ActionEvent event) -> {
-                saveFile(taskList, statusTxt);
+                Tab selectedTab = optionsPane.getSelectionModel().getSelectedItem();
+                if (selectedTab.getId().equals(StringConstants.ID_TAB_ADD_ITEMS)) {
+                    saveFile(taskList, statusTxt);
+                } else if (selectedTab.getId().equals(StringConstants.ID_TAB_UPDATE_ITEMS)) {
+                    ScrollPane scrollUpdateItems = (ScrollPane) ((AnchorPane) selectedTab.getContent()).getChildren().get(0);
+                    AnchorPane updateItemsAnchorPane = (AnchorPane) scrollUpdateItems.getContent();
+                    AnchorPane updateItemRefRow = (AnchorPane) updateItemsAnchorPane.getChildren().get(0);
+                    updateItemsAnchorPane.getChildren().get(0).setVisible(false);
+                    TaskList updatedTaskList = new TaskList();
+                    for (int i = 1; i < updateItemsAnchorPane.getChildren().size(); i++) {
+                        AnchorPane rowAP = (AnchorPane) updateItemsAnchorPane.getChildren().get(i);
+                        String description = null;
+                        int priority = 0;
+                        LocalDate dueDate = null;
+                        String status = null;
+                        LocalDate startDate = null;
+                        LocalDate endDate = null;
+                        boolean addToList = true;
+                        for (int j = 0; j < rowAP.getChildren().size(); j++) {
+                            switch (j) {
+                                case 0: {
+                                    description = ((TextField) rowAP.getChildren().get(j)).getText();
+                                    addToList = ((TextField) rowAP.getChildren().get(j)).isVisible();
+                                    break;
+                                }
+                                case 1: {
+                                    priority = Integer.parseInt(((TextField) rowAP.getChildren().get(j)).getText());
+                                    break;
+                                }
+                                case 2: {
+                                    dueDate = ((DatePicker) rowAP.getChildren().get(j)).getValue();
+                                    break;
+                                }
+                                case 3: {
+                                    status = (String) ((ChoiceBox) rowAP.getChildren().get(j)).getSelectionModel().getSelectedItem();
+                                    break;
+                                }
+                                case 4: {
+                                    startDate = ((DatePicker) rowAP.getChildren().get(j)).getValue();
+                                    break;
+                                }
+                                case 5: {
+                                    endDate = ((DatePicker) rowAP.getChildren().get(j)).getValue();
+                                    break;
+                                }
+                            }
+                        }
+                        if (addToList) {
+                            Task updatedTask = new Task(description, priority, dueDate, status, startDate, endDate);
+                            try {
+                                validateAddItem(updatedTask, updatedTaskList);
+                                updatedTaskList.addtask(updatedTask);
+                            } catch (Exception e) {
+                                setErrorStatus(statusTxt, e.getMessage());
+                                return;
+                            }
+                        }
+                    }
+                    taskList = updatedTaskList;
+                    saveFile(taskList, statusTxt);
+                }
             });
 
             restoreBtn.setOnAction((ActionEvent event) -> {
@@ -124,6 +182,8 @@ public class ToDoList extends Application {
                 File restoreFile = fileChooser.showOpenDialog(stage);
                 if (restoreFile != null) {
                     filepath = restoreFile.getAbsolutePath();
+                } else {
+                    return;
                 }
                 try {
                     openFile(restoreFile.getParent(), restoreFile.getName());
@@ -137,6 +197,7 @@ public class ToDoList extends Application {
                         setErrorStatus(statusTxt, StringConstants.MSG_ERROR_CANNOT_READ_FILE_CONTACT_SUPPORT);
                     }
                 }
+                optionsPane.getSelectionModel().clearAndSelect(0);
                 for (Tab tab : optionsPane.getTabs()) {
                     if (tab.getId().equals(StringConstants.ID_TAB_ADD_ITEMS)) {
                         AnchorPane tabAnchorpane = ((AnchorPane) tab.getContent());
@@ -197,7 +258,7 @@ public class ToDoList extends Application {
                             try {
                                 taskList.movePriority(Integer.parseInt((priority.getText().equals(StringConstants.STRING_EMPTY)) ? "0" : priority.getText()));
                                 Task newTask = new Task(description.getText(), Integer.parseInt((priority.getText().equals(StringConstants.STRING_EMPTY)) ? "0" : priority.getText()), dueDate.getValue(), (String) status.getValue(), startDate.getValue(), endDate.getValue());
-                                validateAddItem(newTask);
+                                validateAddItem(newTask, taskList);
                                 taskList.addtask(newTask);
                                 setSuccessStatus(statusTxt, StringConstants.MSG_SUCCESS_TASK_ADDED);
                                 description.clear();
@@ -255,6 +316,108 @@ public class ToDoList extends Application {
                         saveState(taskList, statusTxt);
                         if (newValue.getId().equals(StringConstants.ID_TAB_ADD_ITEMS)) {
                             refreshTable(addItemTableView);
+                        } else if (newValue.getId().equals(StringConstants.ID_TAB_UPDATE_ITEMS)) {
+                            ScrollPane scrollUpdateItems = (ScrollPane) ((AnchorPane) newValue.getContent()).getChildren().get(0);
+                            AnchorPane updateItemsAnchorPane = (AnchorPane) scrollUpdateItems.getContent();
+                            AnchorPane updateItemRefRow = (AnchorPane) updateItemsAnchorPane.getChildren().get(0);
+                            updateItemsAnchorPane.getChildren().get(0).setVisible(false);
+                            int sz = updateItemsAnchorPane.getChildren().size();
+                            updateItemsAnchorPane.getChildren().clear();
+                            updateItemsAnchorPane.getChildren().add(updateItemRefRow);
+                            for (int j = 0; j < taskList.getTaskList().size(); j++) {
+                                Task task = taskList.getTaskList().get(j);
+                                AnchorPane row = new AnchorPane();
+                                row.setLayoutX(updateItemRefRow.getLayoutX());
+                                row.setLayoutY(updateItemRefRow.getLayoutY() + j * 50);
+                                for (int i = 0; i < updateItemRefRow.getChildren().size(); i++) {
+                                    Node existingRefNode = updateItemRefRow.getChildren().get(i);
+                                    switch (i) {
+                                        case 0: {
+                                            TextField rowDescription = new TextField(task.getDescription());
+                                            rowDescription.setLayoutX(((TextField) existingRefNode).getLayoutX());
+                                            rowDescription.setLayoutY(existingRefNode.getLayoutY());
+                                            rowDescription.setPrefHeight(((TextField) existingRefNode).getPrefHeight());
+                                            rowDescription.setPrefWidth(((TextField) existingRefNode).getWidth());
+                                            row.getChildren().add(rowDescription);
+                                            break;
+                                        }
+                                        case 1: {
+                                            TextField rowPriority = new TextField();
+                                            rowPriority.setText(String.valueOf(task.getPriority()));
+                                            rowPriority.setLayoutX(existingRefNode.getLayoutX());
+                                            rowPriority.setLayoutY(existingRefNode.getLayoutY());
+                                            rowPriority.setPrefHeight(((TextField) existingRefNode).getPrefHeight());
+                                            rowPriority.setPrefWidth(((TextField) existingRefNode).getWidth());
+                                            row.getChildren().add(rowPriority);
+                                            break;
+                                        }
+                                        case 2: {
+                                            DatePicker rowDueDate = new DatePicker(task.getDueDate());
+                                            rowDueDate.setLayoutX(existingRefNode.getLayoutX());
+                                            rowDueDate.setLayoutY(existingRefNode.getLayoutY());
+                                            rowDueDate.setPrefHeight(((DatePicker) existingRefNode).getPrefHeight());
+                                            rowDueDate.setPrefWidth(((DatePicker) existingRefNode).getWidth());
+                                            row.getChildren().add(rowDueDate);
+                                            break;
+                                        }
+                                        case 3: {
+                                            ChoiceBox rowStatus = new ChoiceBox(((ChoiceBox) existingRefNode).getItems());
+                                            rowStatus.setValue(task.getStatus());
+                                            rowStatus.setLayoutX(existingRefNode.getLayoutX());
+                                            rowStatus.setLayoutY(existingRefNode.getLayoutY());
+                                            rowStatus.setPrefHeight(((ChoiceBox) existingRefNode).getPrefHeight());
+                                            rowStatus.setPrefWidth(((ChoiceBox) existingRefNode).getWidth());
+                                            row.getChildren().add(rowStatus);
+                                            break;
+                                        }
+                                        case 4: {
+                                            DatePicker rowStartDate = new DatePicker(task.getStartDate());
+                                            rowStartDate.setLayoutX(existingRefNode.getLayoutX());
+                                            rowStartDate.setLayoutY(existingRefNode.getLayoutY());
+                                            rowStartDate.setPrefHeight(((DatePicker) existingRefNode).getPrefHeight());
+                                            rowStartDate.setPrefWidth(((DatePicker) existingRefNode).getWidth());
+                                            row.getChildren().add(rowStartDate);
+                                            break;
+                                        }
+                                        case 5: {
+                                            DatePicker rowEndDate = new DatePicker(task.getEndDate());
+                                            rowEndDate.setLayoutX(existingRefNode.getLayoutX());
+                                            rowEndDate.setLayoutY(existingRefNode.getLayoutY());
+                                            rowEndDate.setPrefHeight(((DatePicker) existingRefNode).getPrefHeight());
+                                            rowEndDate.setPrefWidth(((DatePicker) existingRefNode).getWidth());
+                                            row.getChildren().add(rowEndDate);
+                                            break;
+                                        }
+                                        case 6: {
+                                            Button rowDelete = new Button(((Button) existingRefNode).getText());
+                                            rowDelete.setLayoutX(existingRefNode.getLayoutX());
+                                            rowDelete.setLayoutY(existingRefNode.getLayoutY());
+                                            rowDelete.setPrefHeight(((Button) existingRefNode).getPrefHeight());
+                                            rowDelete.setPrefWidth(((Button) existingRefNode).getWidth());
+                                            rowDelete.setPadding(((Button) existingRefNode).getInsets());
+                                            rowDelete.setOnAction(new EventHandler<ActionEvent>() {
+                                                @Override
+                                                public void handle(ActionEvent event) {
+                                                    if (rowDelete.getText().equals("X")) {
+                                                        for (int i = 0; i < 6; i++) {
+                                                            ((AnchorPane) rowDelete.getParent()).getChildren().get(i).setVisible(false);
+                                                        }
+                                                        rowDelete.setText("+");
+                                                    } else {
+                                                        rowDelete.setText("X");
+                                                        for (int i = 0; i < 6; i++) {
+                                                            ((AnchorPane) rowDelete.getParent()).getChildren().get(i).setVisible(true);
+                                                        }
+                                                    }
+
+                                                }
+                                            });
+                                            row.getChildren().add(rowDelete);
+                                        }
+                                    }
+                                }
+                                updateItemsAnchorPane.getChildren().add(row);
+                            }
                         }
                     });
                 }
@@ -292,10 +455,9 @@ public class ToDoList extends Application {
      * @param table
      */
     private static void refreshTable(TableView table) {
-        for (int i = 0; i < table.getColumns().size(); i++) {
-            ((TableColumn) (table.getColumns().get(i))).setVisible(false);
-            ((TableColumn) (table.getColumns().get(i))).setVisible(true);
-        }
+//        table.getItems().clear();
+        table.setItems((ObservableList) taskList.getTaskList());
+//        table.refresh();
     }
 
     /**
@@ -305,7 +467,7 @@ public class ToDoList extends Application {
      *
      * @throws Exception
      */
-    public void validateAddItem(Task task) throws Exception {
+    public void validateAddItem(Task task, TaskList pTaskList) throws Exception {
         List errors = new ArrayList<String>();
         if (task.getDescription().equals(StringConstants.STRING_EMPTY)) {
             errors.add(StringConstants.COL_NAME_DESCRIPTION);
@@ -331,10 +493,10 @@ public class ToDoList extends Application {
         if (task.getStatus().equals(StringConstants.STATUS_FINISHED) && (task.getEndDate() == null)) {
             throw new Exception(StringConstants.MSG_NO_END_DATE_PROVIDED_FOR_FINISHED);
         }
-        if (!taskList.checkUniquePriority(task.getPriority())) {
+        if (!pTaskList.checkUniquePriority(task.getPriority())) {
             throw new Exception(StringConstants.MSG_PRIORITY_MUST_BE_UNIQUE);
         }
-        if (!taskList.checkUniqueDescription(task.getDescription())) {
+        if (!pTaskList.checkUniqueDescription(task.getDescription())) {
             throw new Exception(StringConstants.MSG_TASK_MUST_BE_UNIQUE);
         }
     }

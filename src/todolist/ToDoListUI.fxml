@@ -87,24 +87,24 @@
                             <content>
                                 <AnchorPane>
                                     <children>
-                                        <ScrollPane fitToHeight="true" fitToWidth="true" layoutY="37.0" prefHeight="440.0" prefWidth="797.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="37.0">
+                                        <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" layoutY="37.0" pannable="true" prefHeight="622.0" prefWidth="1254.0" vbarPolicy="ALWAYS" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="37.0">
                                             <content>
-                                                <AnchorPane layoutY="46.0" minHeight="0.0" minWidth="0.0" prefHeight="628.0" prefWidth="1249.0">
+                                                <AnchorPane layoutY="46.0">
                                                     <children>
                                                         <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="798.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                                                             <children>
-                                                                <TextField layoutX="9.0" layoutY="10.0" prefHeight="30.0" prefWidth="176.0" promptText="Description" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="1070.0">
+                                                                <TextField layoutX="9.0" layoutY="10.0" prefHeight="30.0" prefWidth="176.0" promptText="Description" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="1055.0">
                                                                     <padding>
                                                                         <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                                     </padding>
                                                                 </TextField>
-                                                                <TextField layoutX="195.0" layoutY="10.0" prefHeight="30.0" prefWidth="80.0" promptText="Priority#" AnchorPane.rightAnchor="970.0">
+                                                                <TextField layoutX="195.0" layoutY="10.0" prefHeight="30.0" prefWidth="80.0" promptText="Priority#" AnchorPane.rightAnchor="955.0">
                                                                     <padding>
                                                                         <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                                     </padding>
                                                                 </TextField>
-                                                                <DatePicker layoutX="284.0" layoutY="10.0" prefHeight="30.0" prefWidth="130.0" promptText="mm/dd/yyyy" AnchorPane.rightAnchor="820.0" />
-                                                                <ChoiceBox layoutX="384.0" layoutY="10.0" prefHeight="30.0" prefWidth="100.0" AnchorPane.rightAnchor="700.0">
+                                                                <DatePicker layoutX="284.0" layoutY="10.0" prefHeight="30.0" prefWidth="130.0" promptText="mm/dd/yyyy" AnchorPane.rightAnchor="805.0" />
+                                                                <ChoiceBox layoutX="384.0" layoutY="10.0" prefHeight="30.0" prefWidth="100.0" AnchorPane.rightAnchor="685.0">
                                                                     <padding>
                                                                         <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                                     </padding>
@@ -116,120 +116,9 @@
                                                                         </FXCollections>
                                                                     </items>
                                                                 </ChoiceBox>
-                                                                <DatePicker layoutX="493.0" layoutY="10.0" prefHeight="30.0" prefWidth="130.0" promptText="mm/dd/yyyy" AnchorPane.rightAnchor="550.0" />
-                                                                <DatePicker layoutX="593.0" layoutY="10.0" prefHeight="30.0" prefWidth="130.0" promptText="mm-dd-yyyy" AnchorPane.rightAnchor="400.0" />
-                                                                <Button layoutX="710.0" layoutY="15.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" text="X" AnchorPane.rightAnchor="200.0">
-                                                                    <padding>
-                                                                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-                                                                    </padding>
-                                                                </Button>
-                                                            </children>
-                                                            <padding>
-                                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                                            </padding>
-                                                        </AnchorPane>
-                                                        <AnchorPane layoutY="50.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="798.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-                                                            <children>
-                                                                <TextField layoutX="9.0" layoutY="10.0" prefHeight="30.0" prefWidth="176.0" promptText="Description" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="1070.0">
-                                                                    <padding>
-                                                                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-                                                                    </padding>
-                                                                </TextField>
-                                                                <TextField layoutX="195.0" layoutY="10.0" prefHeight="30.0" prefWidth="80.0" promptText="Priority#" AnchorPane.rightAnchor="970.0">
-                                                                    <padding>
-                                                                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-                                                                    </padding>
-                                                                </TextField>
-                                                                <DatePicker layoutX="284.0" layoutY="10.0" prefHeight="30.0" prefWidth="130.0" promptText="mm/dd/yyyy" AnchorPane.rightAnchor="820.0" />
-                                                                <ChoiceBox layoutX="384.0" layoutY="10.0" prefHeight="30.0" prefWidth="100.0" AnchorPane.rightAnchor="700.0">
-                                                                    <padding>
-                                                                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-                                                                    </padding>
-                                                                    <items>
-                                                                        <FXCollections fx:factory="observableArrayList">
-                                                                            <String fx:value="Not Started" />
-                                                                            <String fx:value="In Progress" />
-                                                                            <String fx:value="Finished" />
-                                                                        </FXCollections>
-                                                                    </items>
-                                                                </ChoiceBox>
-                                                                <DatePicker layoutX="493.0" layoutY="10.0" prefHeight="30.0" prefWidth="130.0" promptText="mm/dd/yyyy" AnchorPane.rightAnchor="550.0" />
-                                                                <DatePicker layoutX="593.0" layoutY="10.0" prefHeight="30.0" prefWidth="130.0" promptText="mm/dd/yyyy" AnchorPane.rightAnchor="400.0" />
-                                                                <Button layoutX="710.0" layoutY="15.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" text="X" AnchorPane.rightAnchor="200.0">
-                                                                    <padding>
-                                                                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-                                                                    </padding>
-                                                                </Button>
-                                                            </children>
-                                                            <padding>
-                                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                                            </padding>
-                                                        </AnchorPane>
-                                                        <AnchorPane layoutY="100.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="798.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-                                                            <children>
-                                                                <TextField layoutX="9.0" layoutY="10.0" prefHeight="30.0" prefWidth="176.0" promptText="Description" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="1070.0">
-                                                                    <padding>
-                                                                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-                                                                    </padding>
-                                                                </TextField>
-                                                                <TextField layoutX="195.0" layoutY="10.0" prefHeight="30.0" prefWidth="80.0" promptText="Priority#" AnchorPane.rightAnchor="970.0">
-                                                                    <padding>
-                                                                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-                                                                    </padding>
-                                                                </TextField>
-                                                                <DatePicker layoutX="284.0" layoutY="10.0" prefHeight="30.0" prefWidth="130.0" promptText="mm/dd/yyyy" AnchorPane.rightAnchor="820.0" />
-                                                                <ChoiceBox layoutX="384.0" layoutY="10.0" prefHeight="30.0" prefWidth="100.0" AnchorPane.rightAnchor="700.0">
-                                                                    <padding>
-                                                                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-                                                                    </padding>
-                                                                    <items>
-                                                                        <FXCollections fx:factory="observableArrayList">
-                                                                            <String fx:value="Not Started" />
-                                                                            <String fx:value="In Progress" />
-                                                                            <String fx:value="Finished" />
-                                                                        </FXCollections>
-                                                                    </items>
-                                                                </ChoiceBox>
-                                                                <DatePicker layoutX="493.0" layoutY="10.0" prefHeight="30.0" prefWidth="130.0" promptText="mm/dd/yyyy" AnchorPane.rightAnchor="550.0" />
-                                                                <DatePicker layoutX="593.0" layoutY="10.0" prefHeight="30.0" prefWidth="130.0" promptText="mm/dd/yyyy" AnchorPane.rightAnchor="400.0" />
-                                                                <Button layoutX="710.0" layoutY="15.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" text="X" AnchorPane.rightAnchor="200.0">
-                                                                    <padding>
-                                                                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-                                                                    </padding>
-                                                                </Button>
-                                                            </children>
-                                                            <padding>
-                                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                                            </padding>
-                                                        </AnchorPane>
-                                                        <AnchorPane layoutY="150.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="798.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-                                                            <children>
-                                                                <TextField layoutX="9.0" layoutY="10.0" prefHeight="30.0" prefWidth="176.0" promptText="Description" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="1070.0">
-                                                                    <padding>
-                                                                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-                                                                    </padding>
-                                                                </TextField>
-                                                                <TextField layoutX="195.0" layoutY="10.0" prefHeight="30.0" prefWidth="80.0" promptText="Priority#" AnchorPane.rightAnchor="970.0">
-                                                                    <padding>
-                                                                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-                                                                    </padding>
-                                                                </TextField>
-                                                                <DatePicker layoutX="284.0" layoutY="10.0" prefHeight="30.0" prefWidth="130.0" promptText="mm/dd/yyyy" AnchorPane.rightAnchor="820.0" />
-                                                                <ChoiceBox layoutX="384.0" layoutY="10.0" prefHeight="30.0" prefWidth="100.0" AnchorPane.rightAnchor="700.0">
-                                                                    <padding>
-                                                                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-                                                                    </padding>
-                                                                    <items>
-                                                                        <FXCollections fx:factory="observableArrayList">
-                                                                            <String fx:value="Not Started" />
-                                                                            <String fx:value="In Progress" />
-                                                                            <String fx:value="Finished" />
-                                                                        </FXCollections>
-                                                                    </items>
-                                                                </ChoiceBox>
-                                                                <DatePicker layoutX="493.0" layoutY="10.0" prefHeight="30.0" prefWidth="130.0" promptText="mm/dd/yyyy" AnchorPane.rightAnchor="550.0" />
-                                                                <DatePicker layoutX="593.0" layoutY="10.0" prefHeight="30.0" prefWidth="130.0" promptText="mm/dd/yyyy" AnchorPane.rightAnchor="400.0" />
-                                                                <Button layoutX="710.0" layoutY="15.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" text="X" AnchorPane.rightAnchor="200.0">
+                                                                <DatePicker layoutX="493.0" layoutY="10.0" prefHeight="30.0" prefWidth="130.0" promptText="mm/dd/yyyy" AnchorPane.rightAnchor="535.0" />
+                                                                <DatePicker layoutX="593.0" layoutY="10.0" prefHeight="30.0" prefWidth="130.0" promptText="mm-dd-yyyy" AnchorPane.rightAnchor="385.0" />
+                                                                <Button layoutX="710.0" layoutY="15.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" text="X" AnchorPane.rightAnchor="190.0">
                                                                     <padding>
                                                                         <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                                     </padding>

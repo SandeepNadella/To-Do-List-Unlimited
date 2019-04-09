@@ -14,7 +14,7 @@ import javafx.collections.ObservableList;
 
 /**
  * This class describes the task list bean
- * 
+ *
  * @author Sandeep Nadella
  */
 public class TaskList implements Serializable {
@@ -32,8 +32,8 @@ public class TaskList implements Serializable {
 
     /**
      * Get the task list
-     * 
-     * @return 
+     *
+     * @return
      */
     public List<Task> getTaskList() {
         return taskList;
@@ -41,8 +41,8 @@ public class TaskList implements Serializable {
 
     /**
      * Set the task list
-     * 
-     * @param taskList 
+     *
+     * @param taskList
      */
     public void setTaskList(List<Task> taskList) {
         this.taskList.setAll(taskList);
@@ -50,8 +50,8 @@ public class TaskList implements Serializable {
 
     /**
      * Add the task to the task list
-     * 
-     * @param task 
+     *
+     * @param task
      */
     public void addtask(Task task) {
         this.taskList.add(task);
@@ -59,13 +59,13 @@ public class TaskList implements Serializable {
 
     /**
      * Add task with the all the task properties passed
-     * 
+     *
      * @param pDescription
      * @param pPriority
      * @param pDueDate
      * @param pStatus
      * @param pStartDate
-     * @param pEndDate 
+     * @param pEndDate
      */
     public void addtask(String pDescription, int pPriority, LocalDate pDueDate, String pStatus, LocalDate pStartDate, LocalDate pEndDate) {
         Task task = new Task(pDescription, pPriority, pDueDate, pStatus, pStartDate, pEndDate);
@@ -80,9 +80,10 @@ public class TaskList implements Serializable {
 
     /**
      * Check if the priority passed is unique across all tasks in task list
-     * 
+     *
      * @param pPriority
-     * @return 
+     *
+     * @return
      */
     public boolean checkUniquePriority(int pPriority) {
         for (Task task : this.taskList) {
@@ -95,9 +96,10 @@ public class TaskList implements Serializable {
 
     /**
      * Check if the description passed is unique across all tasks in task list
-     * 
+     *
      * @param pDescription
-     * @return 
+     *
+     * @return
      */
     public boolean checkUniqueDescription(String pDescription) {
         for (Task task : this.taskList) {
@@ -109,22 +111,23 @@ public class TaskList implements Serializable {
     }
 
     /**
-     * Move the priorities of all the tasks above the given priority by one to accommodate the new task
-     * 
-     * @param pPriority 
+     * Move the priorities of all the tasks above the given priority by one to
+     * accommodate the new task
+     *
+     * @param pPriority
      */
     public void movePriority(int pPriority) {
-        for(Task task : taskList) {
-            if(task.getPriority() >= pPriority) {
-                task.setPriority(task.getPriority()+1);
+        for (Task task : taskList) {
+            if (task.getPriority() >= pPriority) {
+                task.setPriority(task.getPriority() + 1);
             }
         }
     }
-    
+
     /**
      * Get the string representation of the task list
-     * 
-     * @return 
+     *
+     * @return
      */
     @Override
     public String toString() {
@@ -137,28 +140,32 @@ public class TaskList implements Serializable {
 
     /**
      * Writes all the tasks in the task list to the given output stream
-     * 
+     *
      * @param out
-     * @throws IOException 
+     *
+     * @throws IOException
      */
     private void writeObject(ObjectOutputStream out) throws IOException {
         out.defaultWriteObject();
-        for (Task task : taskList) {
-            out.writeUTF(task.getDescription());
-            out.writeInt(task.getPriority());
-            out.writeUnshared(task.getDueDate());
-            out.writeUTF(task.getStatus());
-            out.writeUnshared(task.getStartDate());
-            out.writeUnshared(task.getEndDate());
+        if (taskList != null) {
+            for (Task task : taskList) {
+                out.writeUTF(task.getDescription());
+                out.writeInt(task.getPriority());
+                out.writeUnshared(task.getDueDate());
+                out.writeUTF(task.getStatus());
+                out.writeUnshared(task.getStartDate());
+                out.writeUnshared(task.getEndDate());
+            }
         }
     }
 
     /**
      * Reads from the input stream and adds to the task list
-     * 
+     *
      * @param in
+     *
      * @throws IOException
-     * @throws ClassNotFoundException 
+     * @throws ClassNotFoundException
      */
     private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
         while (in.available() > 0) {

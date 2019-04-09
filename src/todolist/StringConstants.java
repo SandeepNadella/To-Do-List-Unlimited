@@ -27,6 +27,7 @@ public class StringConstants {
     public static final String COL_STATUS = "status";
     public static final String MSG_TASK_MUST_BE_UNIQUE = "Task must be unique";
     public static final String ID_TAB_ADD_ITEMS = "tab-addItems";
+    public static final String ID_TAB_UPDATE_ITEMS = "tab-updateItems";
     public static final String MSG_ERROR_CANNOT_READ_FILE = "Error: Cannot read from file";
     public static final String COL_NAME_DUE_DATE = " Due Date ";
     public static final String STATUS_FINISHED = "Finished";

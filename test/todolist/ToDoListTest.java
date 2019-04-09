@@ -60,7 +60,6 @@ public class ToDoListTest {
         System.out.println("validateAddItem");
         Task task = null;
         ToDoList instance = new ToDoList();
-        instance.validateAddItem(task);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
