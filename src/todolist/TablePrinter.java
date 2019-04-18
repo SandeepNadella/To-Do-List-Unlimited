@@ -1,6 +1,9 @@
 /*
  * Source: https://jluger.de/blog/20160915_javafx_printing_textview_content.html
- * JavaFX doesn't have native support for printing TableView. So using this guys work.
+ * Author: Jörg Luger
+ * 
+ * JavaFX doesn't have native support for printing TableView of infinite length.
+ * So using Jörg Luger's work with some minor modifications.
  */
 package todolist;
 
