@@ -1,0 +1,10 @@
+/*
+ * Source: https://jluger.de/blog/20160915_javafx_printing_textview_content.html
+ * Author: Jörg Luger
+ * 
+ * JavaFX doesn't have native support for printing TableView of infinite length.
+ * So using Jörg Luger's work with some minor modifications.
+ */
+.table-view {
+  -fx-font-size: 10;
+}
