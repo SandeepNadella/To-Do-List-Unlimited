@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?><jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="To-Do List Unlimited 2019.jnlp">
+    <information>
+        <title>To-Do List Unlimited 2019</title>
+        <vendor>Sandeep Nadella</vendor>
+        <description>An amazing app to Plan, Organize and Track daily tasks</description>
+        <icon href="src/todolist/splash.png" kind="splash"/>
+        <icon href="src/todolist/icon.icns"/>
+        <offline-allowed/>
+        <shortcut>
+            <desktop/>
+            <menu/>
+        </shortcut>
+    </information>
+    <security>
+        <all-permissions/>
+    </security>
+    <update check="always"/>
+    <resources>
+        <j2se version="10.0.2+" href="http://java.sun.com/products/autodl/j2se"/>
+        <jar href="ToDoList.jar" size="516786" download="eager"/>
+    </resources>
+    <jfx:javafx-desc width="800" height="600" main-class="todolist.ToDoList" name="ToDoList"/>
+</jnlp>
+

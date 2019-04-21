@@ -100,6 +100,7 @@ public class ToDoList extends Application {
         Button restoreBtn = (Button) rootAnchorPane.getChildren().get(2);
         Button printBtn = (Button) rootAnchorPane.getChildren().get(3);
         Text statusTxt = (Text) rootAnchorPane.getChildren().get(4);
+        Button clearBtn = (Button) rootAnchorPane.getChildren().get(5);
         statusTxt.setTextAlignment(TextAlignment.CENTER);
         statusTxt.textProperty().addListener(new ChangeListener<String>() {
             @Override
@@ -236,7 +237,15 @@ public class ToDoList extends Application {
                     }
                 }
             });
+            
+            clearBtn.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
 
+                    taskList.getTaskList().clear();
+                }
+            });
+            
             for (Tab tab : optionsPane.getTabs()) {
                 if (tab.getId().equals(StringConstants.ID_TAB_ADD_ITEMS)) {
                     AnchorPane tabAnchorpane = ((AnchorPane) tab.getContent());
@@ -652,7 +661,7 @@ public class ToDoList extends Application {
     /**
      * Get the task list containing the list of all tasks
      *
-     * @return
+     * @return Returns a list of all tasks
      */
     public static TaskList getTaskList() {
         return taskList;

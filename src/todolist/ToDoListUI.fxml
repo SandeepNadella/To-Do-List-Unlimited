@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <!--
 Copyright (C) 2019 Sandeep Nadella <vnadell1@asu.edu>.
 
@@ -182,11 +183,16 @@ MA 02110-1301  USA
                         <Font size="14.0" />
                     </font>
                 </Button>
-                <Text id="messageBoardText" fontSmoothingType="LCD" layoutX="80.0" layoutY="32.0" lineSpacing="0.5" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="1000.0" AnchorPane.leftAnchor="90.0" AnchorPane.rightAnchor="160.0" AnchorPane.topAnchor="6.0">
+                <Text id="messageBoardText" fontSmoothingType="LCD" layoutX="80.0" layoutY="32.0" lineSpacing="0.5" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="910.0" AnchorPane.leftAnchor="180.0" AnchorPane.rightAnchor="160.0" AnchorPane.topAnchor="6.0">
                     <font>
                         <Font size="18.0" />
                     </font>
                 </Text>
+            <Button id="printBtn" layoutX="660.0" layoutY="20.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" text="Clear" AnchorPane.leftAnchor="110.0" AnchorPane.topAnchor="0.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
             </children>
         </AnchorPane>
     </content>
