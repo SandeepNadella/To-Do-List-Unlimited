@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="ToDoList">
+  <ClassDiagramComponents>
+    <Class name="TaskList" package="todolist" visibility="public" xPosition="472.0" yPosition="974.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="taskList" type="ObservableList&lt;Task&gt;" visibility="private" isTransient="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getTaskList" returnType="List&lt;Task&gt;" visibility="public"/>
+        <Method name="setTaskList" returnType="void" visibility="public">
+          <Argument type="List&lt;Task&gt;" name="taskList"/>
+        </Method>
+        <Method name="addtask" returnType="void" visibility="public">
+          <Argument type="Task" name="task"/>
+        </Method>
+        <Method name="addtask" returnType="void" visibility="public">
+          <Argument type="String" name="pDescription"/>
+          <Argument type="int" name="pPriority"/>
+          <Argument type="LocalDate" name="pDueDate"/>
+          <Argument type="String" name="pStatus"/>
+          <Argument type="LocalDate" name="pStartDate"/>
+          <Argument type="LocalDate" name="pEndDate"/>
+        </Method>
+        <Method name="checkUniquePriority" returnType="boolean" visibility="public">
+          <Argument type="int" name="pPriority"/>
+        </Method>
+        <Method name="checkUniqueDescription" returnType="boolean" visibility="public">
+          <Argument type="String" name="pDescription"/>
+        </Method>
+        <Method name="movePriority" returnType="void" visibility="public">
+          <Argument type="int" name="pPriority"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="writeObject" returnType="void" visibility="private">
+          <Argument type="ObjectOutputStream" name="out"/>
+        </Method>
+        <Method name="readObject" returnType="void" visibility="private">
+          <Argument type="ObjectInputStream" name="in"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="StringConstants" package="todolist" visibility="public" xPosition="563.0" yPosition="125.0">
+      <Fields>
+        <Field name="MSG_SUCCESS_SAVE" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="COL_DUE_DATE" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="STATUS_IN_PROGRESS" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="MSG_NO_START_DATE_PROVIDED_FOR_IN_PROGRESS" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="COL_NAME_DESCRIPTION" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="MSG_ERROR_CANNOT_READ_FILE_CONTACT_SUPPORT" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="STATUS_FONT_SIZE" type="int" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="USER_HOME_PROPERTY" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="MSG_SUCCESS_ITEM_ADDED" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="COL_STATUS" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="MSG_TASK_MUST_BE_UNIQUE" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="ID_TAB_ADD_ITEMS" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="ID_TAB_UPDATE_ITEMS" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="MSG_ERROR_CANNOT_READ_FILE" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="COL_NAME_DUE_DATE" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="STATUS_FINISHED" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="MSG_PRIORITY_MUST_BE_UNIQUE" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="MSG_NO_END_DATE_PROVIDED_FOR_FINISHED" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="COL_DESCRIPTION" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="MSG_APPLICATION_ERROR" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="COL_NAME_STATUS" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="APP_DATA_FOLDER" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="COL_END_DATE" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="COL_NAME_PRIORITY" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="SAVED_FILE_CHOOSER_TITLE" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="DEFAULT_FILE_NAME" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="APP_TITLE" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="STRING_EMPTY" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="APP_UI_FILE_NAME" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="MSG_APPLICATION_ERROR_CONTACT_SUPPORT" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="COL_START_DATE" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="COL_PRIORITY" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="MSG_NO_START_DATE_PROVIDED_FOR_FINISHED" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="STATUS_FONT" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="MSG_SUCCESS_TASK_ADDED" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="ICON_FILE_NAME" type="String" visibility="public" isStatic="true" isFinal="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="TablePrinter" package="todolist" visibility="public" xPosition="1022.0" yPosition="125.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="print" returnType="boolean" visibility="public" isStatic="true">
+          <Argument type="TableView&lt;T&gt;" name="tableView"/>
+          <Argument type="PrinterJob" name="jobArg"/>
+          <Argument type="PageLayout" name="pageLayout"/>
+          <Argument type="Stage" name="stage"/>
+        </Method>
+        <Method name="printWithJob" returnType="void" visibility="private" isStatic="true">
+          <Argument type="TableView&lt;T&gt;" name="tableView"/>
+          <Argument type="PrinterJob" name="job"/>
+          <Argument type="PageLayout" name="pageLayout"/>
+        </Method>
+        <Method name="printPage" returnType="void" visibility="private" isStatic="true">
+          <Argument type="PrinterJob" name="job"/>
+          <Argument type="TableView&lt;T&gt;" name="copyView"/>
+          <Argument type="ArrayList&lt;T&gt;" name="itemList"/>
+          <Argument type="PageLayout" name="pageLayout"/>
+        </Method>
+        <Method name="createTableCopy" returnType="TableView&lt;T&gt;" visibility="private" isStatic="true">
+          <Argument type="TableView&lt;T&gt;" name="tableView"/>
+          <Argument type="PrinterJob" name="job"/>
+        </Method>
+        <Method name="getVerticalScrollbar" returnType="ScrollBar" visibility="private" isStatic="true">
+          <Argument type="TableView&lt;T&gt;" name="tableView"/>
+        </Method>
+        <Method name="getVerticalScrollbarForParent" returnType="ScrollBar" visibility="private" isStatic="true">
+          <Argument type="Parent" name="p"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="ToDoList" package="todolist" visibility="public" xPosition="1355.0" yPosition="872.0">
+      <Fields>
+        <Field name="filepath" type="String" visibility="private" isStatic="true"/>
+        <Field name="taskList" type="TaskList" visibility="private" isStatic="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="start" returnType="void" visibility="public">
+          <Argument type="Stage" name="stage"/>
+        </Method>
+        <Method name="saveState" returnType="void" visibility="private">
+          <Argument type="Object" name="pTaskList"/>
+          <Argument type="Text" name="pStatus"/>
+        </Method>
+        <Method name="saveFile" returnType="void" visibility="private">
+          <Argument type="Object" name="pTaskList"/>
+          <Argument type="Text" name="pStatus"/>
+        </Method>
+        <Method name="refreshTable" returnType="void" visibility="private" isStatic="true">
+          <Argument type="TableView" name="table"/>
+        </Method>
+        <Method name="validateAddItem" returnType="void" visibility="public">
+          <Argument type="Task" name="task"/>
+          <Argument type="TaskList" name="pTaskList"/>
+        </Method>
+        <Method name="clearStatusText" returnType="void" visibility="private">
+          <Argument type="Text" name="pStatus"/>
+        </Method>
+        <Method name="setErrorStatus" returnType="void" visibility="public">
+          <Argument type="Text" name="pStatus"/>
+          <Argument type="String" name="pMsg"/>
+        </Method>
+        <Method name="setSuccessStatus" returnType="void" visibility="public">
+          <Argument type="Text" name="pStatus"/>
+          <Argument type="String" name="pMsg"/>
+        </Method>
+        <Method name="writeToFile" returnType="void" visibility="private">
+          <Argument type="Object" name="pTaskListObject"/>
+          <Argument type="Text" name="pStatus"/>
+        </Method>
+        <Method name="openFile" returnType="void" visibility="private"/>
+        <Method name="reopenFile" returnType="void" visibility="private">
+          <Argument type="String" name="pBackupFileLoc"/>
+        </Method>
+        <Method name="openFile" returnType="void" visibility="private">
+          <Argument type="String" name="pFolder"/>
+          <Argument type="String" name="pFileName"/>
+        </Method>
+        <Method name="getFilepath" returnType="String" visibility="public" isStatic="true"/>
+        <Method name="setFilepath" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String" name="filepath"/>
+        </Method>
+        <Method name="getTaskList" returnType="TaskList" visibility="public" isStatic="true"/>
+        <Method name="setTaskList" returnType="void" visibility="public" isStatic="true">
+          <Argument type="TaskList" name="taskList"/>
+        </Method>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Task" package="todolist" visibility="public" xPosition="1022.0" yPosition="334.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="description" type="StringProperty" visibility="private" isTransient="true"/>
+        <Field name="priority" type="IntegerProperty" visibility="private" isTransient="true"/>
+        <Field name="dueDate" type="ObjectProperty&lt;LocalDate&gt;" visibility="private" isTransient="true"/>
+        <Field name="status" type="StringProperty" visibility="private" isTransient="true"/>
+        <Field name="startDate" type="ObjectProperty&lt;LocalDate&gt;" visibility="private" isTransient="true"/>
+        <Field name="endDate" type="ObjectProperty&lt;LocalDate&gt;" visibility="private" isTransient="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="description"/>
+          <Argument type="int" name="priority"/>
+          <Argument type="LocalDate" name="dueDate"/>
+          <Argument type="String" name="status"/>
+          <Argument type="LocalDate" name="startDate"/>
+          <Argument type="LocalDate" name="endDate"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="String" name="description"/>
+          <Argument type="int" name="priority"/>
+          <Argument type="LocalDate" name="dueDate"/>
+          <Argument type="String" name="status"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="String" name="description"/>
+          <Argument type="int" name="priority"/>
+          <Argument type="LocalDate" name="dueDate"/>
+          <Argument type="String" name="status"/>
+          <Argument type="LocalDate" name="startDate"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getDescription" returnType="String" visibility="public"/>
+        <Method name="setDescription" returnType="void" visibility="public">
+          <Argument type="String" name="description"/>
+        </Method>
+        <Method name="getPriority" returnType="int" visibility="public"/>
+        <Method name="setPriority" returnType="void" visibility="public">
+          <Argument type="int" name="priority"/>
+        </Method>
+        <Method name="getDueDate" returnType="LocalDate" visibility="public"/>
+        <Method name="setDueDate" returnType="void" visibility="public">
+          <Argument type="LocalDate" name="dueDate"/>
+        </Method>
+        <Method name="getStatus" returnType="String" visibility="public"/>
+        <Method name="setStatus" returnType="void" visibility="public">
+          <Argument type="String" name="status"/>
+        </Method>
+        <Method name="getStartDate" returnType="LocalDate" visibility="public"/>
+        <Method name="setStartDate" returnType="void" visibility="public">
+          <Argument type="LocalDate" name="startDate"/>
+        </Method>
+        <Method name="getEndDate" returnType="LocalDate" visibility="public"/>
+        <Method name="setEndDate" returnType="void" visibility="public">
+          <Argument type="LocalDate" name="endDate"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <UseRelation source="todolist.ToDoList" target="todolist.Task" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="taskList" source="todolist.TaskList" target="todolist.Task" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ObservableList&lt;Task&gt;"/>
+    <HasRelation name="taskList" source="todolist.ToDoList" target="todolist.TaskList" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="TaskList"/>
+    <UseRelation source="todolist.TaskList" target="todolist.Task" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
